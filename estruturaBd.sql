@@ -1,0 +1,22 @@
+CREATE TABLE usuarios (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE especies (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  especie VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE pets (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(150) NOT NULL,
+  nascimento DATE NOT NULL,
+  especie_id INT NOT NULL,
+  prontuario TEXT,
+  genero ENUM('macho', 'femea') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (especie_id) REFERENCES especies(id)
+);
