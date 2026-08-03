@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
-    <link rel="stylesheet" type="text/css" href="\Trabalho 2°T\assets\css\global.css">
-    <link rel="stylesheet" type="text/css" href="\Trabalho 2°T\assets\css\login.css">
+    <link rel="stylesheet" type="text/css" href="\PetChart\assets\css\global.css">
+    <link rel="stylesheet" type="text/css" href="\PetChart\assets\css\login.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     

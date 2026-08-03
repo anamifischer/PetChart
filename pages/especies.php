@@ -8,17 +8,22 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/global.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-
     <title>Especies</title>
+
 </head>
 <body>
 
-    <div class="layout">
-        <?php include("../assets/includes/sidebar.php"); ?>
+    <?php include("../assets/includes/sidebar.php"); ?>
+    <h1>Dashboard</h1>
 
-        <main class="conteudo">
-            <h1>Dashboard</h1>
-    </div>
+    <tr>
+        <td>Id</td>
+        <td>Espécies Cadastradas</td>
+    </tr>
+
+
+
+
     
 </body>
 </html>
