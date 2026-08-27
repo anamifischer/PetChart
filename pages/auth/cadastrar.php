@@ -22,19 +22,23 @@
 
 
         <div class="loginBox">
-            <form method = "POST" action = "sessao.php">
+            <form method = "POST" action = "../../config/cadastro.php">
                 <h2>Bem-vindo(a) ao PetChart</h2>
                 <p>Realize seu cadastro para começar a utilizar</p>
+
+                <p>Nome: </p> 
+                <input type = "text" name = "nome"> <br>
+
                 <p>E-mail: </p> 
                 <input type = "text" name = "email"> <br>
+
                 <p>Senha: </p>
-                <input type = "password" name = "senha"> <br> 
-                <p>Confirme sua senha: </p>
                 <input type = "password" name = "senha"> <br>
+
+                <p>Confirme sua senha: </p>
+                <input type = "password" name = "confirma_senha"> <br>
                 
-                <input type="button" id = "Login" value = "Login">
-                
-                
+                <input type="submit" id="cadastrar" value="Criar Conta">
             </form>
         </div>
 
