@@ -1,3 +1,8 @@
+<?php
+    require_once "../config/sessao.php";
+    verificarLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     
     <link rel="stylesheet" type="text/css" href="../assets/css/global.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/pets.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 

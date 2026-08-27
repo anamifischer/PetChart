@@ -18,19 +18,21 @@ CREATE TABLE responsaveis (
 );
 
 CREATE TABLE pets (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(150) NOT NULL,
-  nascimento DATE NOT NULL,
-  especie_id INT NOT NULL,
-  prontuario TEXT,
-  genero ENUM('macho', 'femea') NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (especie_id) REFERENCES especies(id)
-  FOREIGN KEY (responsavel_id) REFERENCES responsaveis(id)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(150) NOT NULL,
+    nascimento DATE NOT NULL,
+    especie_id INT NOT NULL,
+    responsavel_id INT NOT NULL,
+    prontuario TEXT,
+    genero ENUM('macho', 'femea') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (especie_id) REFERENCES especies(id),
+    FOREIGN KEY (responsavel_id) REFERENCES responsaveis(id)
 );
 
 
---Mockups
+-- Mockups
 INSERT INTO usuarios (nome, email, senha) VALUES
 ('Ana Fischer', 'anamifischer@gmail.com', 'senha123');
 

@@ -1,3 +1,8 @@
+<?php
+    require_once "../config/sessao.php";
+    verificarLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

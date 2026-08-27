@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>sidebar</title>
-</head>
 <body>
+  <link rel="stylesheet" type="text/css" href="../assets/css/global.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/sidebar.css">
+
     <aside class="sidebar">
 
     <div class="sidebar-logo">
-        <img src="/PetChart/assets/imgs/logo-var-branco.png" alt="Logotipo PetChart">
+        <img src="../assets/imgs/logo-var-branco.png" alt="Logotipo PetChart">
         <h1>Pet Chart</h1>
     </div>
 
@@ -31,7 +26,7 @@
   </nav>
 
   <div class="sidebar-footer">
-    <a href="PetChart/pages/auth/logout.php">
+    <a href="auth/logout.php">
       <i class="ti ti-logout"></i> Sair
     </a>
   </div>
@@ -39,4 +34,3 @@
 </aside>
     
 </body>
-</html>
