@@ -24,15 +24,15 @@
         <div class="loginBox">
             <form method = "POST" action = "sessao.php">
                 <h2>Bem-vindo(a) ao PetChart</h2>
-                <p>Por favor, faça login para acessar aos recursos do sistema</p>
-                <p>Usuário: </p> 
+                <p>Realize seu cadastro para começar a utilizar</p>
+                <p>E-mail: </p> 
                 <input type = "text" name = "email"> <br>
                 <p>Senha: </p>
                 <input type = "password" name = "senha"> <br> 
+                <p>Confirme sua senha: </p>
+                <input type = "password" name = "senha"> <br>
                 
                 <input type="button" id = "Login" value = "Login">
-                <a href = "">Esqueci minha senha</a>
-                <a href = "cadastrar.php">Ainda não tem uma conta?</a>
                 
                 
             </form>

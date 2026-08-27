@@ -8,18 +8,22 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/global.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <title>Especies</title>
+    <title>responsaveis</title>
 
 </head>
 <body>
 
     <?php include("../assets/includes/sidebar.php"); ?>
-    <h1>Espécies atendidas</h1>
+    <h1>Responsáveis</h1>
 
-    <button class="btn btn-primary" id="btn-novo">+ Nova Espécie</button>
+    <button class="btn btn-primary" id="btn-novo">+ Cadastrar Responsável</button>
+
     <tr>
         <td>Id</td>
-        <td>Espécies Cadastradas</td>
+        <td>Nome</td>
+        <td>Endereço</td>
+        <td>Telefone</td>>
+        <td>Pets</td>
     </tr>
 
 
