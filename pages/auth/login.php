@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <header>
+    <header class="auth">
         <img src="../../assets/imgs/logo-sem-fundo.png" alt="Logotipo da marca PetChart - uma pata de gato">
         <h1>PetChart</h1>
     </header>

@@ -51,7 +51,7 @@
                         <td><?=$especie["id"] ?> </td>
                         <td><?=$especie["especie"]?></td>
                         <td class="acoes">
-                            <button class="btn-editar">
+                            <button type="button" class="btn-editar" data-id="<?= $especie["id"] ?>" data-tipo="especie">
                                 <img src="../assets/imgs/pen.png" alt="Editar">
                             </button>
                             <button type="button" 

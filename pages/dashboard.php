@@ -106,7 +106,7 @@
                                 <button class="btn-detalhes">
                                     <img src="../assets/imgs/details.png" alt="Editar">
                                 </button>
-                                <button class="btn-editar">
+                                <button type="button" class="btn-editar" data-id="<?= $pet["id"] ?>" data-tipo="pet">
                                     <img src="../assets/imgs/pen.png" alt="Editar">
                                 </button>
                                 <button type="button" 

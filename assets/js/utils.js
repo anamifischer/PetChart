@@ -1,3 +1,4 @@
+//FUNCTION PARA ABRIR OS MODAIS
 function configurarModal(btnAbrirId, modalId, btnFecharId) {
 
     const btnAbrir = document.getElementById(btnAbrirId);
@@ -18,9 +19,7 @@ function configurarModal(btnAbrirId, modalId, btnFecharId) {
 }
 
 configurarModal("btn-novo-pet", "modal-pet", "fechar-modal-pet");
-
 configurarModal("btn-nova-especie", "modal-especie", "fechar-modal-especie");
-
 configurarModal("btn-novo-responsavel", "modal-responsavel", "fechar-modal-responsavel");
 
 
@@ -37,7 +36,6 @@ let tipoParaExcluir = null;
 botoesExcluir.forEach(function (botao) {
 
     botao.addEventListener("click", function () {
-
         idParaExcluir = botao.dataset.id;
         tipoParaExcluir = botao.dataset.tipo;
 
@@ -45,25 +43,20 @@ botoesExcluir.forEach(function (botao) {
         console.log("Tipo:", tipoParaExcluir);
 
         modalExclusao.classList.add("ativo");
-
     });
 
 });
 
 if (fecharModalExclusao && modalExclusao) {
-
     fecharModalExclusao.addEventListener("click", function () {
         modalExclusao.classList.remove("ativo");
     });
-
 }
 
 if (cancelarExclusao && modalExclusao) {
-
     cancelarExclusao.addEventListener("click", function () {
         modalExclusao.classList.remove("ativo");
     });
-
 }
 
 if (confirmarExclusao) {
@@ -98,8 +91,38 @@ if (confirmarExclusao) {
         console.log("ID:", idParaExcluir);
         console.log("Tipo:", tipoParaExcluir);
         form.submit();
+    });
+}
 
+//CONFIG BOTAO DE EDITAR - MODAL COM VALOR DINÂMICO
+const botoesEditar = document.querySelectorAll(".btn-editar");
+let idParaEditar = null;
+let tipoParaEditar = null;
+
+botoesEditar.forEach(function (botao) {
+    botao.addEventListener("click", function () {
+
+        idParaEditar = botao.dataset.id;
+        tipoParaEditar = botao.dataset.tipo;
+
+        console.log("ID para editar:", idParaEditar);
+        console.log("Tipo para editar:", tipoParaEditar);
+
+        if (tipoParaEditar === "pet") {
+            const modal = document.getElementById("modal-pet");
+            if (modal) { modal.classList.add("ativo");}
+        }
+
+        if (tipoParaEditar === "especie") {
+            const modal = document.getElementById("modal-especie");
+            if (modal) {modal.classList.add("ativo");}
+        }
+
+        if (tipoParaEditar === "responsavel") {
+            const modal = document.getElementById("modal-responsavel");
+            if (modal) {modal.classList.add("ativo");}
+        }
     });
 
-}
+});
 

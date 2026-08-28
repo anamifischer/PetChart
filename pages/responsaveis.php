@@ -66,7 +66,7 @@
                             <td><?= $responsavel["pets"] ?></td>
                             <td class="acoes">
 
-                                <button class="btn-editar">
+                                <button type="button" class="btn-editar" data-id="<?= $responsavel["id"] ?>" data-tipo="responsavel">
                                     <img src="../assets/imgs/pen.png" alt="Editar">
                                 </button>
 
