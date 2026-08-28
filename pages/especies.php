@@ -65,9 +65,9 @@
             <h2>Cadastrar nova Espécie</h2>
             <p>Informe o nome da nova espécie atendida pela clínica</p>
 
-            <form method="POST" action="">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required>
+            <form method="POST" action="../actions/especies/create.php">
+                <label for="especie">Nome</label>
+                <input type="text" id="especie" name="especie" required>
                 <button type="submit" class="btn-modal">Cadastrar Espécie</button>
             </form>
         </div>

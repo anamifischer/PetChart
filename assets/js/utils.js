@@ -17,6 +17,6 @@ function configurarModal(btnAbrirId, modalId, btnFecharId) {
     });
 }
 
-configurarModal("btn-novo", "modal-pet", "fechar-modal-pet");
+configurarModal("btn-novo-pet", "modal-pet", "fechar-modal-pet");
 configurarModal("btn-nova-especie", "modal-especie", "fechar-modal-especie");
 configurarModal("btn-novo-responsavel", "modal-responsavel", "fechar-modal-responsavel");

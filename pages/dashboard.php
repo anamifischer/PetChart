@@ -26,7 +26,6 @@
 
     $resultado_numeros = $conexao->query($sql_numeros);
     $totais = $resultado_numeros->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +128,7 @@
                 <h2>Cadastrar novo pet</h2>
                 <p>Preencha as informações do pet.</p>
 
-                <form method="POST" action="">
+                <form method="POST" action="../actions/pets/create.php">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
                     <label for="nascimento">Data de nascimento</label>
