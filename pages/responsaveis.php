@@ -33,6 +33,7 @@
 
     <div class="layout">
         <?php include("../assets/includes/sidebar.php"); ?>
+        <?php include("../assets/includes/modal-excluir.php"); ?>
 
         <div class="conteudo">
             <header>
@@ -51,19 +52,33 @@
                         <td>Endereço</td>
                         <td>Telefone</td>
                         <td>Pets</td>
+                        <td>Ações</td>
                     </tr>
                 </thead>
 
                 <tbody>
-                <?php while ($responsavel = $resultado->fetch_assoc()): ?>
-                    <tr>
-                        <td><?=$responsavel["id"] ?> </td>
-                        <td><?=$responsavel["nome"]?></td>
-                        <td><?=$responsavel["endereco"]?></td>
-                        <td><?=$responsavel["telefone"]?></td>
-                        <td><?=$responsavel["pets"]?></td>
-                    </tr>
-                <?php endwhile; ?>
+                    <?php while ($responsavel = $resultado->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= $responsavel["id"] ?></td>
+                            <td><?= $responsavel["nome"] ?></td>
+                            <td><?= $responsavel["endereco"] ?></td>
+                            <td><?= $responsavel["telefone"] ?></td>
+                            <td><?= $responsavel["pets"] ?></td>
+                            <td class="acoes">
+
+                                <button class="btn-editar">
+                                    <img src="../assets/imgs/pen.png" alt="Editar">
+                                </button>
+
+                                <button type="button"
+                                        class="btn-excluir"
+                                        data-id="<?= $responsavel["id"] ?>"
+                                        data-tipo="responsavel">
+                                    <img src="../assets/imgs/delete.png" alt="Excluir">
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
@@ -90,7 +105,6 @@
                 </form>
             </div>
         </div>
-
     </div>
     <script src="../assets/js/utils.js"></script>
 </body>

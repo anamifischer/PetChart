@@ -272,3 +272,61 @@ a{
     gap: 0.35rem;
 }
 
+.modal-exclusao {
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-exclusao h2 {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.modal-exclusao p {
+    color: var(--primary-dark);
+    margin-bottom: 2rem;
+}
+
+.botoes-confirmacao {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.botoes-confirmacao button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#cancelar-exclusao {
+    background-color: var(--secondary-light);
+    color: var(--primary-dark);
+}
+
+#confirmar-exclusao {
+    background-color: #b85454;
+    color: var(--white);
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.acoes button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.acoes img {
+    width: 15px;
+    height: 15px;
+}
+

@@ -1,5 +1,5 @@
 <?php   
-    include "../config/conexao.php";
+    include "../../config/conexao.php";
 
     //CREATE DA TABELA RESPONSAVEIS
     if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -21,7 +21,7 @@
         );
 
         if ($execucao_sql_insert->execute()){
-            header("Location: ../pages/responsaveis.php");
+            header("Location: /pages/responsaveis.php");
             exit;
         } else{
             echo "Erro ao cadastrar" . $execucao_sql_insert->error;

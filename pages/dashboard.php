@@ -47,6 +47,7 @@
 <body>
     <div class="layout">
         <?php include("../assets/includes/sidebar.php"); ?>
+        <?php include("../assets/includes/modal-excluir.php"); ?>
 
         <main class="conteudo">
             <header>
@@ -108,7 +109,10 @@
                                 <button class="btn-editar">
                                     <img src="../assets/imgs/pen.png" alt="Editar">
                                 </button>
-                                <button class="btn-excluir">
+                                <button type="button" 
+                                        class="btn-excluir" 
+                                        data-id="<?= $pet["id"] ?>"
+                                        data-tipo="pet">
                                     <img src="../assets/imgs/delete.png" alt="Excluir">
                                 </button>
                             </td>
@@ -179,7 +183,7 @@
 
                 </form>
             </div>
-        </div>                    
+        </div> 
     </div>
 
     <script src="../assets/js/utils.js"></script>

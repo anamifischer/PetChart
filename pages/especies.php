@@ -25,6 +25,7 @@
 
     <div class="layout">
     <?php include("../assets/includes/sidebar.php"); ?>
+    <?php include("../assets/includes/modal-excluir.php"); ?>
 
         <div class="conteudo">
             <header>
@@ -40,6 +41,7 @@
                     <tr>
                         <td>Id</td>
                         <td>Espécies Cadastradas</td>
+                        <td>Ações</td>
                     </tr>
                 </thead>
 
@@ -48,6 +50,17 @@
                     <tr>
                         <td><?=$especie["id"] ?> </td>
                         <td><?=$especie["especie"]?></td>
+                        <td class="acoes">
+                            <button class="btn-editar">
+                                <img src="../assets/imgs/pen.png" alt="Editar">
+                            </button>
+                            <button type="button" 
+                                    class="btn-excluir" 
+                                    data-id="<?= $especie["id"] ?>"
+                                    data-tipo="especie">
+                                <img src="../assets/imgs/delete.png" alt="Excluir">
+                            </button>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
                 </tbody>

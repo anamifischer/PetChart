@@ -1,5 +1,5 @@
 <?php   
-    include "../config/conexao.php";
+    include "../../config/conexao.php";
 
     //CREATE DA TABELA ESPECIES
     if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -13,11 +13,11 @@
 
         $execucao_sql_insert->bind_param(
             "s",
-            $nome,
+            $especie,
         );
 
         if ($execucao_sql_insert->execute()){
-            header("Location: ../pages/especies.php");
+            header("Location: /pages/especies.php");
             exit;
         } else{
             echo "Erro ao cadastrar" . $execucao_sql_insert->error;
