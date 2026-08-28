@@ -103,7 +103,7 @@
                             <td><?= $pet["responsavel"] ?></td>
                             <td><?= $pet["nascimento"] ?></td>
                             <td class="acoes">
-                                <button class="btn-detalhes">
+                                <button class="btn-visualizar" data-id="<?= $pet["id"] ?>" data-tipo="pet">
                                     <img src="../assets/imgs/details.png" alt="Editar">
                                 </button>
                                 <button type="button" class="btn-editar" data-id="<?= $pet["id"] ?>" data-tipo="pet">
@@ -129,10 +129,12 @@
             <div class="modal-conteudo">
                 <button class="modal-fechar" id="fechar-modal-pet">&times;</button>
 
-                <h2>Cadastrar novo pet</h2>
+                <h2 id="titulo-modal-pet">Cadastrar novo pet</h2>
                 <p>Preencha as informações do pet.</p>
 
-                <form method="POST" action="../actions/pets/create.php">
+                <form method="POST" action="../actions/pets/create.php" id="form-pet">
+                    <input type="hidden" id="pet-id" name="id">
+                
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
                     <label for="nascimento">Data de nascimento</label>
@@ -179,11 +181,47 @@
                     <label for="prontuario">Prontuário</label>
                     <textarea id="prontuario" name="prontuario"></textarea>
 
-                    <button type="submit" class="btn-modal">Cadastrar pet</button>
+                    <button type="submit" class="btn-modal" id="btn-submit-pet">Cadastrar pet</button>
 
                 </form>
             </div>
         </div> 
+
+        <div class="modal" id="modal-visualizar-pet">
+            <div class="modal-conteudo modal-visualizar-pet">
+                <button class="modal-fechar" id="fechar-modal-visualizar-pet">
+                    &times;
+                </button>
+
+                <h2 id="titulo-visualizar-pet">Dados do Pet</h2>
+                <div class="dados-pet">
+                    <div class="campo-visualizacao">
+                        <span>Nome</span>
+                        <p id="visualizar-nome"></p>
+                    </div>
+                    <div class="campo-visualizacao">
+                        <span>Data de nascimento</span>
+                        <p id="visualizar-nascimento"></p>
+                    </div>
+                    <div class="campo-visualizacao">
+                        <span>Espécie</span>
+                        <p id="visualizar-especie"></p>
+                    </div>
+                    <div class="campo-visualizacao">
+                        <span>Gênero</span>
+                        <p id="visualizar-genero"></p>
+                    </div>
+                    <div class="campo-visualizacao">
+                        <span>Responsável</span>
+                        <p id="visualizar-responsavel"></p>
+                    </div>
+                    <div class="campo-visualizacao prontuario">
+                        <span>Prontuário</span>
+                        <p id="visualizar-prontuario"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="../assets/js/utils.js"></script>

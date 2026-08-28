@@ -64,22 +64,50 @@
   text-decoration: none;
 }
 
-.acoes {
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
+.modal-visualizar-pet {
+    width: 600px;
+    max-width: 90%;
 }
 
-.acoes button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
+.dados-pet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
 }
 
-.acoes img {
-    width: 15px;
-    height: 15px;
+.campo-visualizacao {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background-color: var(--off-white);
+    border: 1px solid var(--border-color);
 }
+
+.campo-visualizacao span {
+    display: block;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+.campo-visualizacao p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.campo-visualizacao.prontuario {
+    grid-column: 1 / -1;
+}
+
+.campo-visualizacao.prontuario p {
+    min-height: 100px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+
 
 
 

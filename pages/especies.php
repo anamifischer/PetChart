@@ -75,13 +75,15 @@
         <div class="modal-conteudo">
             <button class="modal-fechar" id="fechar-modal-especie">&times;</button>
 
-            <h2>Cadastrar nova Espécie</h2>
+            <h2 id="titulo-modal-especie">Cadastrar nova Espécie</h2>
             <p>Informe o nome da nova espécie atendida pela clínica</p>
 
-            <form method="POST" action="../actions/especies/create.php">
+            <form method="POST" action="../actions/especies/create.php" id="form-especie">
+                <input type="hidden" id="especie-id" name="id">
+            
                 <label for="especie">Nome</label>
                 <input type="text" id="especie" name="especie" required>
-                <button type="submit" class="btn-modal">Cadastrar Espécie</button>
+                <button type="submit" class="btn-modal" id="btn-submit-especie">Cadastrar Espécie</button>
             </form>
         </div>
     </div>   

@@ -88,10 +88,12 @@
             <div class="modal-conteudo">
                 <button class="modal-fechar" id="fechar-modal-responsavel">&times;</button>
 
-                <h2>Cadastrar novo pet</h2>
+                <h2 id="titulo-modal-responsavel">Cadastrar novo Responsável</h2>
                 <p>Preencha as informações do pet.</p>
 
-                <form method="POST" action="../actions/responsaveis/create.php">
+                <form method="POST" action="../actions/responsaveis/create.php" id="form-responsavel">
+                    <input type="hidden" id="responsavel-id" name="id">
+                
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
 
@@ -101,7 +103,7 @@
                     <label for="endereco">Telefone</label>
                     <input type="text" id="telefone" name="telefone" required>
 
-                    <button type="submit" class="btn-modal">Cadastrar Responsável</button>
+                    <button type="submit" class="btn-modal" id="btn-submit-responsavel">Cadastrar Responsável</button>
                 </form>
             </div>
         </div>
