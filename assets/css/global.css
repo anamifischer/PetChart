@@ -1,8 +1,9 @@
 :root {
   /* Laranja — primária */
-  --primary-dark:       #5d4738;
-  --primary-medium:  #cb8c52;
-  --primary-light: #f8f6f3;
+  --primary-dark:#5d4738;
+  --primary-medium:#cb8c52;
+  --primary-light:#f8f6f3;
+  --secondary-light:#d8cec4;
   --white:#fff;
 
   --radius-sm: 8px;
@@ -19,7 +20,7 @@
 
 body{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
   padding: 0;
@@ -30,15 +31,21 @@ body{
 
 }
 
+header{
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+}
+
 header img{
     width: 8%;
 }
 
 h1{
-    font-size: 2em;
-    margin-bottom: 1em;
+    font-size: 2.1em;
     color: var(--primary-medium);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 h2{
@@ -86,10 +93,14 @@ a{
   width: 100%;
   border-radius: var(--radius-md);
   background: var(--white);
+  overflow: hidden;
+}
+
+.table-header{
+  background-color:var(--secondary-light);
 }
 
 .data-table th {
-  background: var(--gray-100) !important;
   text-align: left;
   font-size: 0.75rem;
   font-weight: 500;
@@ -108,12 +119,12 @@ a{
 }
 
 .data-table tr:last-child td { border-bottom: none; }
-.data-table tr:hover td { background: #fafafa; }
+.data-table tbody tr:hover td { background: #fafafa; }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  background-color: var(--white);
+  background-color: var(--secondary-light);
 
   padding: 0.7rem 1.2rem;
   margin-bottom: 1rem;
@@ -128,3 +139,136 @@ a{
   transition: background 0.15s;
   text-decoration: none;
 }
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.conteudo {
+  flex: 1;
+  padding: 3rem 3rem;
+}
+
+.button{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+
+.modal h2{
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4em;
+}
+
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    position: relative;
+
+    width: 90%;
+    max-width: 550px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    border: none;
+    background: transparent;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-conteudo form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-conteudo label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.modal-conteudo input,
+.modal-conteudo select,
+.modal-conteudo textarea {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    background-color: var(--primary-light);
+    border: none;
+}
+
+.modal-conteudo textarea {
+    min-height: 100px;
+    resize: vertical;
+    margin-bottom: 2em;
+}
+
+.btn-modal{
+  width: fit-content !important;
+  align-self: center;
+
+  background-color: var(--secondary-light);
+  padding: 0.7rem 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s;
+  text-decoration: none;
+
+}
+
+.form-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+

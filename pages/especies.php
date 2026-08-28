@@ -1,10 +1,15 @@
 <?php
+    require_once "../config/conexao.php";
     require_once "../config/sessao.php";
     verificarLogin();
+
+    $sql_especies = "SELECT * FROM especies";
+    $resultado = $conexao->query($sql_especies);
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,21 +23,56 @@
 </head>
 <body>
 
+    <div class="layout">
     <?php include("../assets/includes/sidebar.php"); ?>
-    <h1>Espécies atendidas</h1>
 
-    <button class="btn btn-primary" id="btn-novo">+ Nova Espécie</button>
-    
-    <table class="data-table">
-        <tr>
-            <td>Id</td>
-            <td>Espécies Cadastradas</td>
-        </tr>
-    </table>
+        <div class="conteudo">
+            <header>
+                <h1>Espécies atendidas</h1>
+            </header>
+
+            <div class="button">
+                <button class="btn" id="btn-nova-especie">+ Nova Espécie</button>
+            </div>
+
+            <table class="data-table">
+                <thead class="table-header">
+                    <tr>
+                        <td>Id</td>
+                        <td>Espécies Cadastradas</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <?php while ($especie = $resultado->fetch_assoc()): ?>
+                    <tr>
+                        <td><?=$especie["id"] ?> </td>
+                        <td><?=$especie["especie"]?></td>
+                    </tr>
+                <?php endwhile; ?>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 
 
+    <div class="modal" id="modal-especie">
 
+        <div class="modal-conteudo">
+            <button class="modal-fechar" id="fechar-modal-especie">&times;</button>
 
-    
+            <h2>Cadastrar nova Espécie</h2>
+            <p>Informe o nome da nova espécie atendida pela clínica</p>
+
+            <form method="POST" action="">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+                <button type="submit" class="btn-modal">Cadastrar Espécie</button>
+            </form>
+        </div>
+    </div>   
+
+    <script src="../assets/js/utils.js"></script>
 </body>
 </html>
