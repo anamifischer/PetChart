@@ -23,13 +23,15 @@
 
     <button class="btn btn-primary" id="btn-novo">+ Cadastrar Responsável</button>
 
-    <tr>
-        <td>Id</td>
-        <td>Nome</td>
-        <td>Endereço</td>
-        <td>Telefone</td>>
-        <td>Pets</td>
-    </tr>
+    <table class="data-table">
+        <tr>
+            <td>Id</td>
+            <td>Nome</td>
+            <td>Endereço</td>
+            <td>Telefone</td>>
+            <td>Pets</td>
+        </tr>
+    </table>
 
 
 

@@ -11,16 +11,16 @@
 
     <nav class="sidebar-nav">
     <p class="nav-label">Menu</p>
-    <a href="/PetChart/pages/dashboard.php">
+    <a href="dashboard.php">
       <i class="ti ti-home"></i> Início
     </a>
 
-    <a href="/PetChart/pages/pets.php">
-      <i class="ti ti-paw"></i> Pets
+    <a href="especies.php">
+      <i class="ti ti-dna"></i> Espécies
     </a>
 
-    <a href="/PetChart/pages/especies.php">
-      <i class="ti ti-dna"></i> Espécies
+    <a href="responsaveis.php">
+      <i class="ti ti-dna"></i> Responsáveis
     </a>
 
   </nav>

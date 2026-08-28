@@ -22,10 +22,13 @@
     <h1>Espécies atendidas</h1>
 
     <button class="btn btn-primary" id="btn-novo">+ Nova Espécie</button>
-    <tr>
-        <td>Id</td>
-        <td>Espécies Cadastradas</td>
-    </tr>
+    
+    <table class="data-table">
+        <tr>
+            <td>Id</td>
+            <td>Espécies Cadastradas</td>
+        </tr>
+    </table>
 
 
 

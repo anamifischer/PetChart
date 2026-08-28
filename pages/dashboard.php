@@ -46,9 +46,12 @@
             </div>
 
             <h1>Pets cadastrados</h1>
-            <button class="btn btn-primary" id="btn-novo">+ Novo pet</button>
 
-            <table>
+            <div class="button">
+                <button class="btn" id="btn-novo">+ Novo pet</button>
+            </div>
+
+            <table class="data-table">
                 <tr>
                     <td>Id</td>
                     <td>Nome</td>

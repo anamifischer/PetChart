@@ -3,6 +3,15 @@
   --primary-dark:       #5d4738;
   --primary-medium:  #cb8c52;
   --primary-light: #f8f6f3;
+  --white:#fff;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Sombra */
+  --shadow: 0 8px 30px rgba(20, 30, 40, 0.08);
 
   --accent:     #1A6B7A;
 
@@ -27,14 +36,15 @@ header img{
 
 h1{
     font-size: 2em;
+    margin-bottom: 1em;
     color: var(--primary-medium);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 h2{
-    margin-top: 5%;
-    margin-bottom: 8%;
-    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
     color: var(--primary-dark);
     font-weight: 500;
 }
@@ -70,4 +80,51 @@ input[type="text"], input[type="password"]{
 
 a{
     color: var(--primary-medium);
+}
+
+.data-table {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.data-table th {
+  background: var(--gray-100) !important;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-400);
+  padding: 0.7rem 1.25rem;
+}
+
+.data-table td {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9375rem;
+  border-bottom: 1px solid var(--gray-100);
+  vertical-align: middle;
+  color: var(--gray-250) !important;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #fafafa; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--white);
+
+  padding: 0.7rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s;
+  text-decoration: none;
 }
