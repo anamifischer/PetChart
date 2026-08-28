@@ -33,8 +33,6 @@ CREATE TABLE pets (
 
 
 -- Mockups
-INSERT INTO usuarios (nome, email, senha) VALUES
-('Ana Fischer', 'anamifischer@gmail.com', 'senha123');
 
 INSERT INTO responsaveis (nome, endereco, telefone) VALUES
 ('Marcos Almeida', 'Rua das Flores, 120', '(51) 99911-2233'),

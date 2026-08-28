@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                 pets.nascimento,
                 pets.genero,
                 pets.prontuario,
+                pets.especie_id,
+                pets.responsavel_id,
                 especies.especie,
                 responsaveis.nome AS responsavel
             FROM pets
