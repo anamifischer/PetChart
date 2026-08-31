@@ -1,6 +1,4 @@
 <?php
-    require_once "../config/sessao.php";
-    verificarLogin();
     include "../../config/conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

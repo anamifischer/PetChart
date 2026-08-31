@@ -1,8 +1,6 @@
 <?php
 
 include "../../config/conexao.php";
-    require_once "../config/sessao.php";
-    verificarLogin();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 

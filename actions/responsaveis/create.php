@@ -1,7 +1,5 @@
 <?php   
     include "../../config/conexao.php";
-    require_once "../config/sessao.php";
-    verificarLogin();
 
     //CREATE DA TABELA RESPONSAVEIS
     if($_SERVER["REQUEST_METHOD"] === "POST"){
