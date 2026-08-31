@@ -1,5 +1,7 @@
 <?php   
     include "../../config/conexao.php";
+    require_once "../config/sessao.php";
+    verificarLogin();
     
     //CREATE DA TABELA PETS
     if($_SERVER["REQUEST_METHOD"] === "POST"){

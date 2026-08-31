@@ -1,6 +1,8 @@
 <?php
 
 include "../../config/conexao.php";
+require_once "../config/sessao.php";
+verificarLogin();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST["id"];

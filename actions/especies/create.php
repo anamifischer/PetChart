@@ -1,4 +1,6 @@
 <?php   
+    require_once "../config/sessao.php";
+    verificarLogin();
     include "../../config/conexao.php";
 
     //CREATE DA TABELA ESPECIES
