@@ -39,6 +39,10 @@
                 <input type = "password" name = "confirma_senha"> <br>
                 
                 <input type="submit" id="cadastrar" value="Criar Conta">
+
+                <div class="links">
+                    <a href = "login.php">Já tem uma conta?</a>
+                </div>
             </form>
         </div>
 

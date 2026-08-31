@@ -35,6 +35,24 @@
         <?php include("../assets/includes/sidebar.php"); ?>
         <?php include("../assets/includes/modal-excluir.php"); ?>
 
+        <?php if (isset($_GET["erro"]) && $_GET["erro"] === "responsavel_em_uso"): ?>
+            <div class="modal ativo" id="modal-erro-responsavel">
+                <div class="modal-conteudo modal-erro">
+                    <button class="modal-fechar" id="fechar-erro-responsavel">
+                        &times;
+                    </button>
+                    <div class="erro-icone">⚠️</div>
+                    <h2>Não foi possível excluir</h2>
+                    <p>
+                        Este responsável está vinculado a um ou mais pets.
+                    </p>
+                    <button class="btn-modal" id="fechar-erro-responsavel-btn">
+                        Entendi
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <div class="conteudo">
             <header>
                 <h1>Responsáveis</h1>

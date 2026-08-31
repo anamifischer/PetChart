@@ -22,10 +22,28 @@
 
 </head>
 <body>
-
     <div class="layout">
     <?php include("../assets/includes/sidebar.php"); ?>
     <?php include("../assets/includes/modal-excluir.php"); ?>
+
+        <?php if (isset($_GET["erro"]) && $_GET["erro"] === "especie_em_uso"): ?>
+
+            <div class="modal ativo" id="modal-erro-especie">
+                <div class="modal-conteudo modal-erro">
+                    <button class="modal-fechar" id="fechar-erro-especie">
+                        &times;
+                    </button>
+                    <div class="erro-icone">⚠️</div>
+                    <h2>Não foi possível excluir</h2>
+                    <p>
+                        Esta espécie está vinculada a um ou mais pets.
+                    </p>
+                    <button class="btn-modal" id="fechar-erro-btn">
+                        Entendi
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <div class="conteudo">
             <header>

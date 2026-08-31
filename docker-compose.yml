@@ -8,9 +8,6 @@ services:
       - ./:/var/www/html
     depends_on:
       - mysql
-    command: >
-      bash -c "echo 'DirectoryIndex pages/auth/login.php' >> /etc/apache2/mods-enabled/dir.conf
-      && apache2-foreground"
 
   mysql:
     image: mysql:8.3

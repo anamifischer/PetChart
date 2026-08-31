@@ -1,5 +1,5 @@
 <?php   
-    include "../config/conexao.php";
+    include "../../config/conexao.php";
     
     //CREATE DA TABELA PETS
     if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -27,7 +27,7 @@
         );
 
         if ($execucao_sql_insert->execute()){
-            header("Location: ../pages/dashboard.php");
+            header("Location: ../../pages/dashboard.php");
             exit;
         } else{
             echo "Erro ao cadastrar" . $execucao_sql_insert->error;

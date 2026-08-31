@@ -35,17 +35,16 @@
                 <input type="submit" id="Login" value="Login">
 
                 <div class="links">
-                    <a href = "">Esqueci minha senha</a>
                     <a href = "cadastrar.php">Ainda não tem uma conta?</a>
                 </div>
                 
             </form>
         </div>
 
-    <footer>
+    <div class="footer">
         <p>Pet Chart Soluções Digitais LTDA</p>
         <p>CNPJ 00.000.000/0001-01</p>
-    </footer>
+    </div>
 
 </body>
 </html>

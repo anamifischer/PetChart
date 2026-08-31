@@ -330,3 +330,22 @@ a{
     height: 15px;
 }
 
+.modal-erro {
+    width: 350px;
+    text-align: center;
+}
+
+.erro-icone {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.modal-erro h2 {
+    margin-bottom: 10px;
+}
+
+.modal-erro p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+

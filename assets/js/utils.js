@@ -218,3 +218,33 @@ botoesEditar.forEach(function (botao) {
 
 });
 
+const modalErro = document.getElementById("modal-erro-especie");
+const fecharErro = document.getElementById("fechar-erro-especie");
+const fecharErroBtn = document.getElementById("fechar-erro-btn");
+
+if (modalErro) {
+
+    fecharErro.addEventListener("click", () => {
+        modalErro.classList.remove("ativo");
+    });
+
+    fecharErroBtn.addEventListener("click", () => {
+        modalErro.classList.remove("ativo");
+    });
+}
+
+const modalErroResponsavel = document.getElementById("modal-erro-responsavel");
+const fecharErroResponsavel = document.getElementById("fechar-erro-responsavel");
+const fecharErroResponsavelBtn = document.getElementById("fechar-erro-responsavel-btn");
+
+if (modalErroResponsavel) {
+
+    fecharErroResponsavel.addEventListener("click", () => {
+        modalErroResponsavel.classList.remove("ativo");
+    });
+
+    fecharErroResponsavelBtn.addEventListener("click", () => {
+        modalErroResponsavel.classList.remove("ativo");
+    });
+}
+
