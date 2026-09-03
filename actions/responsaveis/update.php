@@ -5,15 +5,14 @@ include "../../config/conexao.php";
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
     $id = $_GET["id"];
-    $sql = "SELECT * FROM responsaveis WHERE id = ?";
-    $execucao = $conexao->prepare($sql);
-    $execucao->bind_param("i", $id);
-    $execucao->execute();
-    $resultado = $execucao->get_result();
-    $responsavel = $resultado->fetch_assoc();
+
+    $sql = "SELECT * FROM responsaveis WHERE id = $id";
+
+    $resultado = mysqli_query($conexao, $sql);
+    $responsavel = mysqli_fetch_assoc($resultado);
+
     header("Content-Type: application/json");
     echo json_encode($responsavel);
-    $execucao->close();
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -22,31 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = $_POST["nome"];
     $telefone = $_POST["telefone"];
     $endereco = $_POST["endereco"];
-    
 
-    $sql = "UPDATE responsaveis 
-            SET nome = ?, 
-                telefone = ?, 
-                endereco = ? 
-            WHERE id = ?";
+    $sql = "UPDATE responsaveis
+            SET nome = '$nome',
+                telefone = '$telefone',
+                endereco = '$endereco'
+            WHERE id = $id";
 
-    $execucao = $conexao->prepare($sql);
+    if (mysqli_query($conexao, $sql)) {
 
-    $execucao->bind_param(
-        "sssi",
-        $nome,
-        $telefone,
-        $endereco,
-        $id
-    );
+        if (mysqli_affected_rows($conexao) == 1) {
+            header("Location: ../../pages/responsaveis.php");
+            exit;
+        } else {
+            echo "Nenhuma alteração foi realizada.";
+        }
 
-    if ($execucao->execute()) {
-        header("Location: ../../pages/responsaveis.php");
-        exit;
     } else {
-        echo "Erro ao atualizar: " . $execucao->error;
+        echo "Erro ao atualizar o responsável.";
     }
-    $execucao->close();
 }
 
 ?>

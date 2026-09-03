@@ -1,18 +1,18 @@
 <?php
-    include "../../config/conexao.php";
+
+include "../../config/conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
     $id = $_GET["id"];
-    $sql = "SELECT * FROM especies WHERE id = ?";
-    $execucao = $conexao->prepare($sql);
-    $execucao->bind_param("i", $id);
-    $execucao->execute();
-    $resultado = $execucao->get_result();
-    $pet = $resultado->fetch_assoc();
+
+    $sql = "SELECT * FROM especies WHERE id = $id";
+
+    $resultado = mysqli_query($conexao, $sql);
+    $especie = mysqli_fetch_assoc($resultado);
+
     header("Content-Type: application/json");
-    echo json_encode($pet);
-    $execucao->close();
+    echo json_encode($especie);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -21,24 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $especie = $_POST["especie"];
 
     $sql = "UPDATE especies 
-            SET especie = ? WHERE id = ?";
+            SET especie = '$especie'
+            WHERE id = $id";
 
-    $execucao = $conexao->prepare($sql);
+    if (mysqli_query($conexao, $sql)) {
 
-    $execucao->bind_param(
-        "si",
-        $especie,
-        $id
-    );
+        if (mysqli_affected_rows($conexao) == 1) {
+            header("Location: ../../pages/especies.php");
+            exit;
+        } else {
+            echo "Nenhuma alteração foi realizada.";
+        }
 
-    if ($execucao->execute()) {
-        header("Location: ../../pages/especies.php");
-        exit;
     } else {
-        echo "Erro ao atualizar: " . $execucao->error;
+        echo "Erro ao atualizar a espécie.";
     }
-    $execucao->close();
 }
-
 
 ?>

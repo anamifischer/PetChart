@@ -5,6 +5,7 @@ include "../../config/conexao.php";
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 
     $id = $_GET["id"];
+
     $sql = "SELECT 
                 pets.id,
                 pets.nome,
@@ -18,15 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
             FROM pets
             INNER JOIN especies ON pets.especie_id = especies.id
             INNER JOIN responsaveis ON pets.responsavel_id = responsaveis.id
-            WHERE pets.id = ?";
-    $execucao = $conexao->prepare($sql);
-    $execucao->bind_param("i", $id);
-    $execucao->execute();
-    $resultado = $execucao->get_result();
-    $pet = $resultado->fetch_assoc();
+            WHERE pets.id = $id";
+
+    $resultado = mysqli_query($conexao, $sql);
+    $pet = mysqli_fetch_assoc($resultado);
+
     header("Content-Type: application/json");
     echo json_encode($pet);
-    $execucao->close();
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -40,35 +39,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $prontuario = $_POST["prontuario"];
 
     $sql = "UPDATE pets 
-            SET nome = ?, 
-                nascimento = ?, 
-                especie_id = ?, 
-                genero = ?, 
-                responsavel_id = ?, 
-                prontuario = ?
-            WHERE id = ?";
+            SET nome = '$nome',
+                nascimento = '$nascimento',
+                especie_id = $especie_id,
+                genero = '$genero',
+                responsavel_id = $responsavel_id,
+                prontuario = '$prontuario'
+            WHERE id = $id";
 
-    $execucao = $conexao->prepare($sql);
+    if (mysqli_query($conexao, $sql)) {
 
-    $execucao->bind_param(
-        "ssisisi",
-        $nome,
-        $nascimento,
-        $especie_id,
-        $genero,
-        $responsavel_id,
-        $prontuario,
-        $id
-    );
+        if (mysqli_affected_rows($conexao) == 1) {
+            header("Location: ../../pages/dashboard.php");
+            exit;
+        } else {
+            echo "Nenhuma alteração foi realizada.";
+        }
 
-    if ($execucao->execute()) {
-        header("Location: ../../pages/dashboard.php");
-        exit;
     } else {
-        echo "Erro ao atualizar: " . $execucao->error;
+        echo "Erro ao atualizar o pet.";
     }
-    $execucao->close();
 }
-
 
 ?>

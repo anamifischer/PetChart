@@ -22,7 +22,8 @@
             exit;
 
         } else {
-         echo "E-mail ou senha incorretos!";
+            header("Location: ../pages/auth/login.php?erro=1");
+            exit;
         }
     }
 

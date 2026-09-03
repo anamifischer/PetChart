@@ -1,27 +1,25 @@
-<?php   
-    include "../../config/conexao.php";
+<?php
 
-    //CREATE DA TABELA ESPECIES
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $especie = $_POST["especie"];
-        
-        $sql_insert_especies = "INSERT INTO especies 
-            (especie)
-            VALUES (?)";
+include "../../config/conexao.php";
 
-        $execucao_sql_insert = $conexao->prepare($sql_insert_especies);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $execucao_sql_insert->bind_param(
-            "s",
-            $especie,
-        );
+    $especie = $_POST["especie"];
 
-        if ($execucao_sql_insert->execute()){
-            header("Location: /pages/especies.php");
+    $sql = "INSERT INTO especies (especie) VALUES ('$especie')";
+
+    if (mysqli_query($conexao, $sql)) {
+
+        if (mysqli_affected_rows($conexao) == 1) {
+            header("Location: ../../pages/especies.php");
             exit;
-        } else{
-            echo "Erro ao cadastrar" . $execucao_sql_insert->error;
+        } else {
+            echo "Erro ao cadastrar a espécie.";
         }
-        $execucao_sql_insert->close();
+
+    } else {
+        echo "Erro ao cadastrar a espécie.";
     }
+}
+
 ?>

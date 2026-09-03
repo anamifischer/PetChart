@@ -32,6 +32,10 @@
                 <p>Senha: </p>
                 <input type = "password" name = "senha"> <br> 
                 
+                <?php if (isset($_GET["erro"])): ?>
+                    <p class="erro-login">E-mail ou senha incorretos.</p>
+                <?php endif; ?>
+                
                 <input type="submit" id="Login" value="Login">
 
                 <div class="links">

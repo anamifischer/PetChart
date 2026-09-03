@@ -1,39 +1,32 @@
-<?php   
-    include "../../config/conexao.php";
+<?php
 
-    
-    //CREATE DA TABELA PETS
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $nome = $_POST["nome"];
-        $nascimento = $_POST["nascimento"];
-        $especie_id = $_POST["especie_id"];
-        $genero = $_POST["genero"];
-        $responsavel_id = $_POST["responsavel_id"];
-        $prontuario = $_POST["prontuario"];
+include "../../config/conexao.php";
 
-        $sql_insert_pets = "INSERT INTO pets 
-            (nome, nascimento, especie_id, genero, responsavel_id, prontuario)
-            VALUES (?, ?, ?, ?, ?, ?)";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $execucao_sql_insert = $conexao->prepare($sql_insert_pets);
+    $nome = $_POST["nome"];
+    $nascimento = $_POST["nascimento"];
+    $especie_id = $_POST["especie_id"];
+    $genero = $_POST["genero"];
+    $responsavel_id = $_POST["responsavel_id"];
+    $prontuario = $_POST["prontuario"];
 
-        $execucao_sql_insert->bind_param(
-            "ssisis",
-            $nome,
-            $nascimento,
-            $especie_id,
-            $genero,
-            $responsavel_id,
-            $prontuario
-        );
+    $sql = "INSERT INTO pets 
+        (nome, nascimento, especie_id, genero, responsavel_id, prontuario)
+        VALUES ('$nome', '$nascimento', $especie_id, '$genero', $responsavel_id, '$prontuario')";
 
-        if ($execucao_sql_insert->execute()){
+    if (mysqli_query($conexao, $sql)) {
+
+        if (mysqli_affected_rows($conexao) == 1) {
             header("Location: ../../pages/dashboard.php");
             exit;
-        } else{
-            echo "Erro ao cadastrar" . $execucao_sql_insert->error;
+        } else {
+            echo "Erro ao cadastrar o pet.";
         }
-        $execucao_sql_insert->close();
+
+    } else {
+        echo "Erro ao cadastrar o pet.";
     }
+}
 
 ?>

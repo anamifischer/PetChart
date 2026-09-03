@@ -2,18 +2,30 @@
 
 include "../../config/conexao.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_POST["id"];
-    $sql_delete = "DELETE FROM responsaveis WHERE id = ?";
-    try {
-        $execucao_sql_delete = $conexao->prepare($sql_delete);
-        $execucao_sql_delete->bind_param("i", $id);
-        $execucao_sql_delete->execute();
-        header("Location: /pages/responsaveis.php?sucesso=excluido");
+mysqli_report(MYSQLI_REPORT_OFF);
+
+$id = $_POST["id"];
+
+$sql = "DELETE FROM responsaveis WHERE id = $id";
+
+if (mysqli_query($conexao, $sql)) {
+
+    if (mysqli_affected_rows($conexao) == 1) {
+        header("Location: ../../pages/responsaveis.php");
         exit;
-    } catch (mysqli_sql_exception $e) {
-        header("Location: /pages/responsaveis.php?erro=responsavel_em_uso");
-        exit;
+    } else {
+        echo "Erro ao excluir o responsável.";
     }
+
+} else {
+
+    if (mysqli_errno($conexao) == 1451) {
+        header("Location: ../../pages/responsaveis.php?erro=responsavel_em_uso");
+        exit;
+    } else {
+        echo "Erro ao excluir o responsável.";
+    }
+
 }
+
 ?>

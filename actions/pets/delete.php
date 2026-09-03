@@ -2,20 +2,21 @@
 
 include "../../config/conexao.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_POST["id"];
-    $sql_delete = "DELETE FROM pets WHERE id = ?";
-    $execucao_sql_delete = $conexao->prepare($sql_delete);
-    $execucao_sql_delete->bind_param(
-        "i",
-        $id
-    );
+$id = $_POST["id"];
 
-    if ($execucao_sql_delete->execute()) {
+$sql = "DELETE FROM pets WHERE id = $id";
+
+if (mysqli_query($conexao, $sql)) {
+
+    if (mysqli_affected_rows($conexao) == 1) {
         header("Location: ../../pages/dashboard.php");
         exit;
     } else {
-        echo "Erro ao excluir: " . $execucao_sql_delete->error;
+        echo "Erro ao excluir o pet.";
     }
-    $execucao_sql_delete->close();
+
+} else {
+    echo "Erro ao excluir o pet.";
 }
+
+?>

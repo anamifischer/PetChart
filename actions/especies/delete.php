@@ -1,19 +1,31 @@
 <?php
-    include "../../config/conexao.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id = $_POST["id"];
-    $sql_delete = "DELETE FROM especies WHERE id = ?";
+include "../../config/conexao.php";
 
-    try{
-        $execucao_sql_delete = $conexao->prepare($sql_delete);
-        $execucao_sql_delete->bind_param("i", $id);
-        $execucao_sql_delete->execute();
-        header("Location: /pages/especies.php?sucesso=excluido"); exit;
-    }
-    catch (mysqli_sql_exception $e) {
-        header("Location: /pages/especies.php?erro=especie_em_uso"); 
+mysqli_report(MYSQLI_REPORT_OFF);
+
+$id = $_POST["id"];
+
+$sql = "DELETE FROM especies WHERE id = $id";
+
+if (mysqli_query($conexao, $sql)) {
+
+    if (mysqli_affected_rows($conexao) == 1) {
+        header("Location: ../../pages/especies.php");
         exit;
+    } else {
+        echo "Erro ao excluir a espécie.";
     }
+
+} else {
+
+    if (mysqli_errno($conexao) == 1451) {
+        header("Location: ../../pages/especies.php?erro=especie_em_uso");
+        exit;
+    } else {
+        echo "Erro ao excluir a espécie.";
+    }
+
 }
+
 ?>

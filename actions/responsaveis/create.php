@@ -1,32 +1,29 @@
-<?php   
-    include "../../config/conexao.php";
+<?php
 
-    //CREATE DA TABELA RESPONSAVEIS
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $nome = $_POST["nome"];
-        $endereco = $_POST["endereco"];
-        $telefone = $_POST["telefone"];
-        
-        $sql_insert_responsavel = "INSERT INTO responsaveis 
-            (nome, endereco, telefone)
-            VALUES (?, ?, ?)";
+include "../../config/conexao.php";
 
-        $execucao_sql_insert = $conexao->prepare($sql_insert_responsavel);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $execucao_sql_insert->bind_param(
-            "sss",
-            $nome,
-            $endereco,
-            $telefone
-        );
+    $nome = $_POST["nome"];
+    $endereco = $_POST["endereco"];
+    $telefone = $_POST["telefone"];
 
-        if ($execucao_sql_insert->execute()){
-            header("Location: /pages/responsaveis.php");
+    $sql = "INSERT INTO responsaveis 
+        (nome, endereco, telefone)
+        VALUES ('$nome', '$endereco', '$telefone')";
+
+    if (mysqli_query($conexao, $sql)) {
+
+        if (mysqli_affected_rows($conexao) == 1) {
+            header("Location: ../../pages/responsaveis.php");
             exit;
-        } else{
-            echo "Erro ao cadastrar" . $execucao_sql_insert->error;
+        } else {
+            echo "Erro ao cadastrar o responsável.";
         }
-        $execucao_sql_insert->close();
+
+    } else {
+        echo "Erro ao cadastrar o responsável.";
     }
+}
 
 ?>
