@@ -10,10 +10,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $genero = $_POST["genero"];
     $responsavel_id = $_POST["responsavel_id"];
     $prontuario = $_POST["prontuario"];
+    $foto = "NULL";
+    $foto_tipo = "NULL";
+
+    if (isset($_FILES["foto"]) && $_FILES["foto"]["error"] === UPLOAD_ERR_OK) {
+        $conteudo = file_get_contents($_FILES["foto"]["tmp_name"]);
+        $tipo = mime_content_type($_FILES["foto"]["tmp_name"]);
+
+        $foto = "'" . mysqli_real_escape_string($conexao, $conteudo) . "'";
+        $foto_tipo = "'" . $tipo . "'";
+    }
 
     $sql = "INSERT INTO pets 
-        (nome, nascimento, especie_id, genero, responsavel_id, prontuario)
-        VALUES ('$nome', '$nascimento', $especie_id, '$genero', $responsavel_id, '$prontuario')";
+        (nome, nascimento, especie_id, genero, responsavel_id, prontuario, foto, foto_tipo)
+        VALUES ('$nome', '$nascimento', $especie_id, '$genero', $responsavel_id, '$prontuario', $foto, $foto_tipo)";
 
     if (mysqli_query($conexao, $sql)) {
 

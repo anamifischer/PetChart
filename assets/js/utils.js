@@ -22,6 +22,38 @@ configurarModal("btn-novo-pet", "modal-pet", "fechar-modal-pet");
 configurarModal("btn-nova-especie", "modal-especie", "fechar-modal-especie");
 configurarModal("btn-novo-responsavel", "modal-responsavel", "fechar-modal-responsavel");
 
+//MINIATURA VISUALIZAR IMG
+const inputFoto = document.getElementById('foto');
+const preview = document.getElementById('preview');
+
+function mostrarPreview(src) {
+    if (!preview) return;
+
+    if (src) {
+        preview.src = src;
+        preview.style.display = 'block';
+    } else {
+        preview.removeAttribute('src');
+        preview.style.display = 'none';
+    }
+}
+
+if (inputFoto && preview) {
+    inputFoto.addEventListener('change', function () {
+        const arquivo = this.files[0];
+        mostrarPreview(arquivo ? URL.createObjectURL(arquivo) : null);
+    });
+}
+
+//LIMPAR PREVIEW AO ABRIR "NOVO PET"
+const btnNovoPet = document.getElementById("btn-novo-pet");
+if (btnNovoPet) {
+    btnNovoPet.addEventListener("click", function () {
+        if (inputFoto) inputFoto.value = "";
+        mostrarPreview(null);
+    });
+}
+
 
 //VISUALIZAR DADOS PET
 const botoesVisualizar = document.querySelectorAll(".btn-visualizar");
@@ -46,6 +78,18 @@ botoesVisualizar.forEach(function (botao) {
                 document.getElementById("visualizar-genero").textContent = pet.genero;
                 document.getElementById("visualizar-responsavel").textContent = pet.responsavel;
                 document.getElementById("visualizar-prontuario").textContent = pet.prontuario || "Nenhuma informação registrada.";
+
+                //FOTO DO PET
+                const fotoVisualizar = document.getElementById("visualizar-foto");
+                if (fotoVisualizar) {
+                    if (pet.foto) {
+                        fotoVisualizar.src = "../" + pet.foto;
+                        fotoVisualizar.style.display = "block";
+                    } else {
+                        fotoVisualizar.removeAttribute("src");
+                        fotoVisualizar.style.display = "none";
+                    }
+                }
 
                 console.log("Dados do pet:", pet);
             });
@@ -169,6 +213,10 @@ botoesEditar.forEach(function (botao) {
                     document.getElementById("prontuario").value = pet.prontuario;
 
                     document.getElementById("pet-id").value = pet.id;
+
+                    //FOTO ATUAL DO PET
+                    if (inputFoto) inputFoto.value = "";
+                    mostrarPreview(pet.foto ? "../" + pet.foto : null);
                 });
 
         }
@@ -247,4 +295,3 @@ if (modalErroResponsavel) {
         modalErroResponsavel.classList.remove("ativo");
     });
 }
-

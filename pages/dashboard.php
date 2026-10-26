@@ -5,6 +5,7 @@
 
     $sql_pets = "SELECT 
                     pets.id,
+                    pets.foto,
                     pets.nome,
                     responsaveis.nome AS responsavel,
                     pets.nascimento,
@@ -84,6 +85,7 @@
                 <thead class="table-header"> 
                     <tr>
                         <td>Id</td>
+                        <td>Foto</td>
                         <td>Nome</td>
                         <td>Espécie</td>
                         <td>Gênero</td>
@@ -97,6 +99,7 @@
                     <?php while ($pet = $resultado->fetch_assoc()): ?>   
                         <tr>
                             <td><?= $pet["id"] ?></td>
+                            <td><?= $pet["foto"] ?></td>
                             <td><?= $pet["nome"] ?></td>
                             <td><?= $pet["especie"] ?></td>
                             <td><?= $pet["genero"] ?></td>
@@ -132,9 +135,15 @@
                 <h2 id="titulo-modal-pet">Cadastrar novo pet</h2>
                 <p>Preencha as informações do pet.</p>
 
-                <form method="POST" action="../actions/pets/create.php" id="form-pet">
+                <form method="POST" action="../actions/pets/create.php" id="form-pet" enctype="multipart/form-data">
                     <input type="hidden" id="pet-id" name="id">
                 
+                    <div class="campo-foto">
+                        <label for="foto">Foto do animal</label>
+                        <input type="file" id="foto" name="foto" accept="image/png, image/jpeg, image/webp">
+                        <img id="preview" alt="Pré-visualização">
+                    </div>
+
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
                     <label for="nascimento">Data de nascimento</label>

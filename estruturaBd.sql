@@ -25,12 +25,13 @@ CREATE TABLE pets (
     responsavel_id INT NOT NULL,
     prontuario TEXT,
     genero ENUM('macho', 'femea') NOT NULL,
+    foto MEDIUMBLOB NULL,
+    foto_tipo VARCHAR(50) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (especie_id) REFERENCES especies(id),
     FOREIGN KEY (responsavel_id) REFERENCES responsaveis(id)
 );
-
 
 -- Mockups
 
