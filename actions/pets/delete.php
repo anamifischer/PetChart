@@ -2,13 +2,31 @@
 
 include "../../config/conexao.php";
 
-$id = $_POST["id"];
+$id = (int) $_POST["id"];
 
-$sql = "DELETE FROM pets WHERE id = $id";
+$stmt = mysqli_prepare($conexao, "SELECT foto FROM pets WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $foto);
+mysqli_stmt_fetch($stmt);
+mysqli_stmt_close($stmt);
 
-if (mysqli_query($conexao, $sql)) {
+$stmt = mysqli_prepare($conexao, "DELETE FROM pets WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
 
-    if (mysqli_affected_rows($conexao) == 1) {
+if (mysqli_stmt_execute($stmt)) {
+
+    if (mysqli_stmt_affected_rows($stmt) == 1) {
+
+        //Se o pet tinha foto, apaga o arquivo da pasta
+        if (!empty($foto)) {
+            $caminho = __DIR__ . "/../../uploads/pets/" . basename($foto);
+
+            if (file_exists($caminho)) {
+                unlink($caminho);
+            }
+        }
+
         header("Location: ../../pages/dashboard.php");
         exit;
     } else {

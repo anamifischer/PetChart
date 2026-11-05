@@ -49,6 +49,12 @@ if (inputFoto && preview) {
 const btnNovoPet = document.getElementById("btn-novo-pet");
 if (btnNovoPet) {
     btnNovoPet.addEventListener("click", function () {
+        document.getElementById("form-pet").reset();
+        document.getElementById("pet-id").value = "";
+        document.getElementById("titulo-modal-pet").textContent = "Cadastrar novo pet";
+        document.getElementById("btn-submit-pet").textContent = "Cadastrar pet";
+        document.getElementById("form-pet").action = "../actions/pets/create.php";
+
         if (inputFoto) inputFoto.value = "";
         mostrarPreview(null);
     });
@@ -83,7 +89,7 @@ botoesVisualizar.forEach(function (botao) {
                 const fotoVisualizar = document.getElementById("visualizar-foto");
                 if (fotoVisualizar) {
                     if (pet.foto) {
-                        fotoVisualizar.src = "../" + pet.foto;
+                        fotoVisualizar.src = "../uploads/pets/" + pet.foto;
                         fotoVisualizar.style.display = "block";
                     } else {
                         fotoVisualizar.removeAttribute("src");
@@ -216,7 +222,7 @@ botoesEditar.forEach(function (botao) {
 
                     //FOTO ATUAL DO PET
                     if (inputFoto) inputFoto.value = "";
-                    mostrarPreview(pet.foto ? "../" + pet.foto : null);
+                    mostrarPreview(pet.foto ? "../uploads/pets/" + pet.foto : null);
                 });
 
         }

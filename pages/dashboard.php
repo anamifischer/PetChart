@@ -99,7 +99,13 @@
                     <?php while ($pet = $resultado->fetch_assoc()): ?>   
                         <tr>
                             <td><?= $pet["id"] ?></td>
-                            <td><?= $pet["foto"] ?></td>
+                            <td>
+                                <?php if (!empty($pet["foto"])): ?>
+                                    <img src="../uploads/pets/<?= $pet["foto"] ?>" class="miniatura" alt="Foto de <?= $pet["nome"] ?>">
+                                <?php else: ?>
+                                    <div class="miniatura sem-foto">🐾</div>
+                                <?php endif; ?>
+                            </td>
                             <td><?= $pet["nome"] ?></td>
                             <td><?= $pet["especie"] ?></td>
                             <td><?= $pet["genero"] ?></td>
@@ -109,7 +115,7 @@
                                 <button class="btn-visualizar" data-id="<?= $pet["id"] ?>" data-tipo="pet">
                                     <img src="../assets/imgs/details.png" alt="Editar">
                                 </button>
-                                <button type="button" class="btn-editar" data-id="<?= $pet["id"] ?>" data-tipo="pet">
+                                <button type="button" class="btn-editar" data-id="<?= $pet["id"] ?>" data-tipo="pet" data-foto="<?= $pet["foto"] ?>">
                                     <img src="../assets/imgs/pen.png" alt="Editar">
                                 </button>
                                 <button type="button" 
@@ -139,9 +145,12 @@
                     <input type="hidden" id="pet-id" name="id">
                 
                     <div class="campo-foto">
-                        <label for="foto">Foto do animal</label>
-                        <input type="file" id="foto" name="foto" accept="image/png, image/jpeg, image/webp">
+                        <label>Foto do animal</label>
+
                         <img id="preview" alt="Pré-visualização">
+
+                        <label for="foto" class="btn-foto">Escolher foto</label>
+                        <input type="file" id="foto" name="foto" accept="image/png, image/jpeg, image/webp" hidden>
                     </div>
 
                     <label for="nome">Nome</label>
@@ -203,6 +212,7 @@
                 </button>
 
                 <h2 id="titulo-visualizar-pet">Dados do Pet</h2>
+                <img id="visualizar-foto" alt="Foto do pet">
                 <div class="dados-pet">
                     <div class="campo-visualizacao">
                         <span>Nome</span>
